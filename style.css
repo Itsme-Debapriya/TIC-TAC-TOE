@@ -1,0 +1,242 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+  user-select: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+@keyframes rgbEffect {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes glitch {
+  2%,
+  64% {
+    transform: translate(2px, 0) skew(0deg);
+  }
+  4%,
+  60% {
+    transform: translate(-2px, 0) skew(0deg);
+  }
+  62% {
+    transform: translate(0, 0) skew(5deg);
+  }
+}
+
+body {
+  background: linear-gradient(
+    45deg,
+    rgba(255, 0, 0, 0.8),
+    rgba(0, 255, 0, 0.8),
+    rgba(0, 0, 255, 0.8),
+    rgba(255, 255, 0, 0.8),
+    rgba(255, 0, 255, 0.8),
+    rgba(0, 255, 255, 0.8)
+  );
+  background-size: 400% 400%;
+  animation: rgbEffect 10s ease infinite;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  overflow: hidden;
+}
+
+main {
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
+  width: 100%;
+  max-width: 400px;
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  perspective: 1000px;
+}
+
+#header {
+  display: flex;
+  width: 100%;
+  max-width: 300px;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+#header .player {
+  background: rgba(50, 50, 50, 0.5);
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 15px;
+  border: solid 3px transparent;
+  opacity: 0.6;
+  transition: 0.3s;
+  backdrop-filter: blur(5px);
+}
+
+#header .player:hover {
+  opacity: 0.9;
+  transform: scale(1.05);
+}
+
+#header .player-active {
+  opacity: 1;
+  border: solid 3px rgba(255, 255, 255, 0.5);
+}
+
+#header #xPlayerDisplay {
+  color: #ed85be;
+}
+
+#header #oPlayerDisplay {
+  color: #350dd6;
+}
+
+#titleHeader {
+  font-size: 22px;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 80px);
+  grid-template-rows: repeat(3, 80px);
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+#board .cell {
+  background: rgba(50, 50, 50, 0.5);
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 42px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#board .cell:hover {
+  transform: scale(1.05);
+  background: rgba(70, 70, 70, 0.6);
+}
+
+.mode-controls {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+#modeSwitchBtn {
+  width: 100%;
+  max-width: 300px;
+  background: rgba(50, 50, 50, 0.5);
+  padding: 15px 20px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#modeSwitchBtn:hover {
+  transform: scale(1.05);
+  background: rgba(70, 70, 70, 0.6);
+}
+
+#modeDescription {
+  text-align: center;
+  color: #b0b0b0;
+  margin-bottom: 20px;
+  font-size: 14px;
+  max-width: 300px;
+  line-height: 1.6;
+}
+
+#restartBtn {
+  width: 100%;
+  max-width: 300px;
+  background: rgba(50, 50, 50, 0.5);
+  padding: 15px 20px;
+  border: none;
+  border-radius: 15px;
+  font-weight: 600;
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.3s;
+  visibility: hidden;
+  backdrop-filter: blur(5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+#restartBtn:hover {
+  transform: scale(1.05);
+  background: rgba(70, 70, 70, 0.6);
+}
+
+/* Responsive Design */
+@media (max-width: 400px) {
+  main {
+    padding: 15px;
+    border-radius: 15px;
+  }
+
+  #board {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+  }
+}
+
+/* Accessibility and Focus States */
+#modeSwitchBtn:focus,
+#restartBtn:focus,
+#header .player:focus {
+  outline: 2px solid #ed85be;
+  outline-offset: 2px;
+}

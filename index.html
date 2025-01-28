@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main role="main">
+      <span style="font-size: 20px">You can choose the mark "X" or "O"</span>
+      <div id="header">
+        <div
+          id="xPlayerDisplay"
+          class="player player-active"
+          onclick="choosePlayer('X')"
+        >
+          X
+        </div>
+
+        <h3 id="titleHeader">CHOOSE</h3>
+
+        <div id="oPlayerDisplay" class="player" onclick="choosePlayer('O')">
+          O
+        </div>
+      </div>
+
+      <div id="board">
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+        <div class="cell"></div>
+      </div>
+
+      Click here to change game mode
+      <span style="font-size: 25px">&#11167;</span>
+      <div class="mode-controls">
+        <button id="modeSwitchBtn">
+          Player vs Computer
+          <span class="arrow"></span>
+        </button>
+      </div>
+      <div id="modeDescription">Play against a computer with random moves.</div>
+
+      <div class="btn-controls">
+        <button id="restartBtn">Restart</button>
+      </div>
+
+      <script src="script.js"></script>
+    </main>
+  </body>
+</html>
